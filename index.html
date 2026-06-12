@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>自動販売機シミュレータ</title>
+    <link rel="stylesheet" href="style.css?v=999">
+
+</head>
+<body>
+
+    <h1>【自動販売機】</h1>
+
+    <h3>--- 商品 ---</h3>
+    <table class="vending-table">
+        <tr>
+            <td>
+                <img src="drink/water.png" class="drink-image" alt="天然水"><br>
+                <b>天然水</b><br>
+                100円<br><br>
+                <button type="button" id="btn-1" onclick="buyProduct(1)">[ 押す ]</button>
+            </td>
+            <td>
+                <img src="drink/jasumin.png" class="drink-image" alt="ジャスミン茶"><br>
+                <b>ジャスミン茶</b><br>
+                130円<br><br>
+                <button type="button" id="btn-2" onclick="buyProduct(2)">[ 押す ]</button>
+            </td>
+            <td>
+                <img src="drink/miruku.png" class="drink-image" alt="おいしい牛乳"><br>
+                <b>おいしい牛乳</b><br>
+                140円<br><br>
+                <button type="button" id="btn-3" onclick="buyProduct(3)">[ 押す ]</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="drink/cola.png" class="drink-image" alt="コーラ"><br>
+                <b>コーラ</b><br>
+                160円<br><br>
+                <button type="button" id="btn-4" onclick="buyProduct(4)">[ 押す ]</button>
+            </td>
+            <td>
+                <img src="drink/coffee.png" class="drink-image" alt="コーヒー"><br>
+                <b>コーヒー</b><br>
+                110円<br><br>
+                <button type="button" id="btn-5" onclick="buyProduct(5)">[ 押す ]</button>
+            </td>
+            <td>
+                <img src="drink/juice.png" class="drink-image" alt="ジュース"><br>
+                <b>ジュース</b><br>
+                150円
+                <button type="button" id="btn-6" onclick="buyProduct(6)">[ 押す ]</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="slot-container">
+        <div class="slot-title">数字がそろえば1本無料!!</div>
+        <div id="slot-display">[- - -]</div>
+    </div>
+
+
+    <h3>--- 金額投入口 ---</h3>
+    <p class="money-section">
+        🪙 お金を入力：
+        <input type="number" id="moneyInput" placeholder="0"> 円
+        <button type="button" onclick="insertMoney()">お金を入れる</button>
+        <button type="button" onclick="cancelAndRefund()">返金</button>
+    </p>
+
+    <div class="money-display-panel">
+        <span id="change-empty-lamp" style="color: #ff3333; font-weight: bold; margin-right: 15px; display: none;">⚠️つり銭切れ</span>
+        投入金額： <span id="currentMoneyDisplay">0</span> 円
+    </div>
+
+    <h3>--- 取り出し口 ・ 掲示板 ---</h3>
+    <div class="display-panel">
+        <div id="result">
+            お金を入力して「お金を入れる」を押し、商品の「押す」ボタンをクリックしてください。
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

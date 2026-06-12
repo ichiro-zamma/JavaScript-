@@ -1,0 +1,176 @@
+/* 全体の文字や背景を整える */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 文字のフォント（形） */
+    background-color: #f6f7f8;/* 画面全体の背景色（薄いグレー） */
+    color: #333;               /* 基本の文字の色（濃いグレー） */
+    margin: 40px auto;         /* 画面の上下に40pxのスキマを作り、左右は真ん中寄せ */
+    max-width: 500px;          /* 自販機全体の横幅を最大500pxに制限（スマホサイズ） */
+    padding: 20px;             /* 自販機の内側に少し余裕のスキマを作る */
+}
+/* タイトルと区切り線 */
+h1 {
+    font-size: 20px;           /* タイトル「【自動販売機】」の文字の大きさ */
+    text-align: center;        /* 文字を真ん中に寄せる */
+    color: #222;               /* タイトルの文字色 */
+}
+h3 {
+    margin-top: 5px ;   /* 「-- 商品 ---」の上のスキマを5pxにする */
+    margin-bottom: 1px ;/* 下のスキマを1pxにして、商品との間を詰める */
+}
+/* 商品（テーブル）の装飾 */
+.vending-table {
+    width: 100%;               /* 棚の横幅をいっぱい（500px）に広げる */
+    border-collapse: separate; /* マス目同士の間にスキマを空けるための設定 */
+    border-spacing: 10px;      /* マス目同士のスキマを10px空ける */
+    table-layout: fixed;       /* 3つのマス目の横幅を、完全に同じ（均等）にする */
+}
+
+.vending-table td {
+    background-color: #ffffff; /* 商品の背景を白にする */
+    border: 1px solid #e0e0e0; /* 薄いグレーの枠線をつける */
+    border-radius: 8px;        /* 枠の四隅を丸める */
+    padding: 11px;             /* マスの中の隙間 */
+    padding-bottom: 35px;      /* 下側にボタンが置かれるので、あらかじめ35px分空けておく */
+    text-align: center;        /* 中の文字や画像を真ん中寄せにする */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 枠の後ろにうっすら影をつけて立体的にする */
+    
+    position: relative;        /* ボタンを一番下にピン留めするための「基準点」にする */
+    vertical-align: top;       /* 中身（画像や名前）を上に詰めて並べる */
+}
+
+/* 通常の購入ボタンの装飾 */
+.vending-table button {
+    background-color: #007bff; /* ボタンの色（きれいな青） */
+    color: white;              /* ボタンの文字（[ 押す ]）を白にする */
+    border: none;              /* ボタン特有のダサい黒枠線を消す */
+    border-radius: 4px;        /* ボタンの角を少し丸める */
+    padding: 6px 12px;         /* ボタンの文字の周りにスキマを作って押しやすくする */
+    cursor: pointer;           /* マウスを乗せたときに「手（指）の形」にする */
+    font-weight: bold;         /* 文字を太字にする */
+    transition: background-color 0.2s; /* マウスを乗せたとき、0.2秒かけて滑らかに色を変える */
+
+    /* 位置を固定するセット */
+    position: absolute;        /* 自由な場所にピン留めする設定（tdを基準にする） */
+    bottom: 18px;              /* 箱の一番下から18px浮かせた場所に固定 */
+    left: 50%;                 /* 左右の位置をいったん50%（真ん中）にする */
+    transform: translateX(-50%); /* ボタン自身の横幅の半分だけ左に戻す（これで完全に真ん中にくる） */
+    white-space: nowrap;       /* 画面が狭くなっても文字が勝手に改行されないようにする */
+}
+
+/* マウスが乗った（hoverした）ときの設定 */
+.vending-table button:hover {
+    background-color: #0056b3; /* ちょっと濃い（暗い）青色に変える */
+}
+
+/* 売り切れ（disabled）で押せなくなったボタンの設定 */
+.vending-table button:disabled {
+    background-color: #6c757d !important; /* ボタンをグレー（灰色）にする */
+    color: #fffefe !important;           /* 文字を白っぽくする */
+    cursor: not-allowed;                 /* マウスを乗せたら「禁止マーク」にする */
+    opacity: 0.7;                        /* 全体をちょっと半透明（薄く）にする */
+}
+
+/* 金額投入口 */
+money-section {
+    background-color: #e9ecef; /* 金額投入口エリアの背景（グレー） */
+    padding: 12px;             /* 内側のスキマ */
+    border-radius: 6px;        /* 角を少し丸める */
+    text-align: center;        /* 真ん中寄せ */
+    font-weight: bold;         /* 文字を太字にする */
+    margin-bottom: 10px;       /* 下の要素とのスキマを10px空ける */
+}
+
+#moneyInput {
+    padding: 6px;              /* 入力フォームの中のスキマ */
+    font-size: 16px;           /* 入力する数字の大きさ */
+    width: 80px;               /* 入力フォームの横幅 */
+    text-align: right;         /* 数字を右詰めで表示（お金の表示っぽく） */
+    border: 1px solid #ccc;    /* フォームの枠線 */
+    border-radius: 4px;        /* フォームの角を丸める */
+}
+
+/* 投入口の横にある「お金を入れる」「返金」ボタンの設定 */
+.money-section button {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;          /* ボタン同士の間に5pxのスキマを空ける */
+    position: static;          /* 商品ボタンのように「下へピン留め」するのを解除する */
+    transform: none;           /* ズレ防止のおまじないを解除する */
+}
+
+.money-section button:first-of-type {
+    background-color: #28a745;/* 1番目のボタン（お金を入れる）を「緑色」にする */
+    color: white;
+}
+
+.money-section button:last-of-type {
+    background-color: #dc3545;/* 最後のボタン（返金）を「赤色」にする */
+    color: white;
+}
+
+/* 本物の自販機の赤いLED風の金額表示パネル */
+.money-display-panel {
+    background-color: #000000; /* パネルを真っ黒にする */
+    color: #ff3333;            /* 文字を「明るい赤」にする */
+    font-family: 'Courier New', Courier, monospace; /* デジタル時計のようなカクカクした文字にする */
+    font-size: 22px;           /* 文字を大きくする */
+    font-weight: bold;         /* 太字 */
+    text-align: right;         /* 金額を右詰めにし、本物の自販機っぽくする */
+    padding: 10px 20px;        /* パネル内のスキマ */
+    border-radius: 4px;        /* 角を少し丸める */
+    box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.5); /* 💡 パネルの内側にうっすら赤い影をつけて、光っているように見せる */
+    margin: 15px 0;            /* 上下に15pxのスキマを空ける */
+}
+
+/* 取り出し口・掲示板 */
+.display-panel {
+    background-color: #222222; /* 掲示板を黒っぽい色にする */
+    color: #00ff66;            /* 文字をネオンのような「黄緑色」にする */
+    font-family: monospace;    /* 等幅フォント（パソコンの画面っぽい文字）にする */
+    padding: 15px;             /* 内側のスキマ */
+    border-radius: 6px;        /* 角を丸める */
+    min-height: 44px;          /* 文字がなくても、最低44pxの縦幅をキープする */
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.5); /* 内側に黒い影をつけて画面の奥を表現 */
+}
+
+.drink-image {
+    width: 80px;               /* ジュース画像の横幅を80pxに固定 */
+    max-height: 90px;          /* 💡 画像の縦の長さを最大90pxに制限する（これでガタガタを防ぐ） */
+    object-fit: contain;       /* 縦横比を崩さず、枠の中に綺麗に収める（画像が潰れないようにする） */
+}
+
+/* スロット液晶画面設定 */
+.slot-container {
+    background-color: #111111; /* スロットの枠を真っ黒にする */
+    border: 3px solid #444444; /* 濃いグレーの太いお枠で囲む */
+    border-radius: 6px;        /* 角を丸める */
+    padding: 10px;             /* 内側の余白 */
+    text-align: center;        /* 中身を真ん中寄せ */
+    max-width: 200px;          /* スロット自体の横幅を200pxにする */
+    margin: 5px auto ;         /* 💡 上のスキマを5pxにして、左右は真ん中寄せ（これでジュースの下にピタッと配置される） */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* 下側に強い影をつけて、メカっぽく立体的に見せる */
+}
+
+.slot-title {
+    color: #aaaaaa;            /* 「🎰 LUCKY SLOT 🎰」の文字を少し薄いグレーにする */
+    font-size: 11px;           /* 文字を小さくする */
+    font-weight: bold;         /* 太字 */
+    margin-bottom: 5px;        /* 数字の表示パネルとのスキマを5px空ける */
+    letter-spacing: 1px;       /* 文字と文字の間隔を少しだけ広げてオシャレにする */
+}
+
+#slot-display {
+    color: #33ff33;            /* スロットの数字を「鮮やかな黄緑色」にする */
+    font-family: 'Courier New', Courier, monospace; /* 数字をカクカクしたデジタル文字にする */
+    font-size: 28px;           /* 数字をドカンと大きく表示する */
+    font-weight: bold;         /* 超太字 */
+    letter-spacing: 6px;       /* 数字と数字の間を6px空けて、見やすくする */
+    text-shadow: 0 0 8px rgba(51, 255, 51, 0.8); /* 💡 数字の後ろに黄緑色のボカシ影をつけて、本当にLEDが光っているように見せる */
+    background-color: #002200; /* 数字の背景を「深い緑色」にして、液晶画面っぽくする */
+    padding: 4px;              /* 液晶内の余白 */
+    border-radius: 4px;        /* 液晶の角を少し丸める */
+}
